@@ -17,19 +17,14 @@ void main() {
   if (pid == 0 )  //Nos encontramos en Proceso hijo 
   {        
     printf("Soy el proceso HIJO \n");	  
-    //pid y ppid getpid(), getppid()
-    pid_hijo=getpid;
-    pid_padre=getppid;
-    printf("Mi PID es: pid=% \n El PID de mi padre es:  ppid=%",pid_hijo,pid_padre);
+    printf("Mi PID es: =%d \n El PID de mi padre es:  ppid=%d",getpid(),getppid());
   }
   else    //Nos encontramos en Proceso padre 
   { 
+    wait(NULL); 
     printf("Soy el proceso PADRE \n");
-    pid_hijo = wait(NULL); //espera la finalización del proceso hijo
-    //pid y ppid
-    pid_hijo=getpid;
-    pid_padre=getppid;
-    printf("Mi PID es: pid=% \n El PID de mi padre es:  ppid=%",pid_hijo,pid_padre);
+   
+    printf("Mi PID es: pid=%d \n El PID de mi padre es:  ppid=%d",getpid(),getppid());
     printf("El proceso hijo a terminado\n");          
   }
    exit(0);
