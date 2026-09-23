@@ -4,29 +4,30 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void main() {
-  pid_t pid, pid_hijo;
+int main() {
+  pid_t pid;
 
   pid = fork();
 
-  if (pid == -1 ) 
+  if (pid == -1) 
   {
-    printf("ERROR !!! No se ha podido crear el proceso hijo...");
+    printf("ERROR !!! No se ha podido crear el proceso hijo...\n");
     exit(-1);       
   }
-  if (pid == 0 )  //Nos encontramos en Proceso hijo 
+  if (pid == 0)  // Nos encontramos en Proceso hijo 
   {        
-    printf("Soy el proceso HIJO \n");	  
-    printf("Mi PID es: =%d \n El PID de mi padre es:  ppid=%d",getpid(),getppid());
+    printf("Soy el proceso HIJO \n");     
+    printf("Mi PID es: %d \nEl PID de mi padre es: %d\n", getpid(), getppid());
   }
-  else    //Nos encontramos en Proceso padre 
+  else    // Nos encontramos en Proceso padre 
   { 
     wait(NULL); 
-    printf("Soy el proceso PADRE \n");
+    printf("\nSoy el proceso PADRE \n");
    
-    printf("Mi PID es: pid=%d \n El PID de mi padre es:  ppid=%d",getpid(),getppid());
-    printf("El proceso hijo a terminado\n");          
+    printf("Mi PID es: %d \nMi hijo tenía el PID: %d\n", getpid(), getppid());
+    printf("El proceso hijo ha terminado\n");          
   }
-   exit(0);
+  
+  exit(0);
 }
 
