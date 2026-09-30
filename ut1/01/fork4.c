@@ -28,7 +28,7 @@ void main() {
 
     if (pid_hijo2 == -1 ) {
     printf("ERROR !!! No se ha podido crear el proceso hijo2...");
-    ; }
+    }
    
     if (pid_hijo2 == 0 ){          
     printf("Soy el proceso P3 | PID: %d | PPID: %d\n", getpid(), getppid());
