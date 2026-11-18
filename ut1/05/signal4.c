@@ -20,9 +20,7 @@ void fun_signal(int signum) {
 
     contador++;
 
-    if (contador < total_veces) {
-        alarm(intervalo);
-    } else {
+    if (contador == total_veces) {
         printf("Alarma desactivada\n");
         exit(0);
     }
@@ -41,9 +39,10 @@ int main() {
 
     printf("Alarma activada\n");
     
-    alarm(intervalo);
+    
 
     while (1) {
+        alarm(intervalo);
         pause();
     }
 
